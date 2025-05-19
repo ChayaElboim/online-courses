@@ -1,0 +1,20 @@
+
+<h2>רשימת קורסים</h2>
+
+@if (errorMessage()) {
+  <div class="error-message">{{ errorMessage() }}</div>
+} @else if (loading()) {
+  <p>טוען קורסים...</p>
+} @else if (courses().length > 0) {
+  <ul>
+    @for (course of courses(); track course.id) {
+      <li>
+        <h3>{{ course.title }}</h3>
+        <p>{{ course.description }}</p>
+        <p>מורה: {{ course.teacherId }}</p>
+      </li>
+    }
+  </ul>
+} @else {
+  <p>אין קורסים זמינים כרגע.</p>
+}
